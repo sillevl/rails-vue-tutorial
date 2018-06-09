@@ -11,13 +11,18 @@ console.log('Hello World from Webpacker')
 
 import TurbolinksAdapter from 'vue-turbolinks';
 import Vue from 'vue/dist/vue.esm'
+import Vuetify from 'vuetify'
 import App from '../app.vue'
+import Hello from '../hello.vue'
+
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 
 Vue.use(TurbolinksAdapter)
+Vue.use(Vuetify)
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
     el: '[data-behaviour="vue"]',
-    components: { App }
+    components: { App, Hello }
   })
 })

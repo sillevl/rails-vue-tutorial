@@ -48,3 +48,41 @@ config/routes.rb
 ```
 root 'landing_page#index
 ```
+
+## Setup vue
+
+Add `vue-turbolinks` dependency
+
+```
+yarn add vue-turbolinks
+```
+
+Add to `app/views/layouts/application.html.erb`
+
+```
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+```
+
+```html
+    <div data-behaviour="vue">
+      <%= yield %>
+    </div>
+```
+
+Initialize Vue by adding the following code in the `app/javascript/packs/application.js` file:
+
+```javascript
+import TurbolinksAdapter from 'vue-turbolinks';
+import Vue from 'vue/dist/vue.esm'
+import App from '../app.vue'
+
+Vue.use(TurbolinksAdapter)
+
+document.addEventListener('turbolinks:load', () => {
+  const app = new Vue({
+    el: '[data-behaviour="vue"]',
+    components: { App }
+  })
+})
+```
+

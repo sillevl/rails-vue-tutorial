@@ -1,24 +1,50 @@
-# README
+# Rails with vue
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Create a new Rails project
+Create a new plain rails project:
+```
+rails new rails-vue
+```
 
-Things you may want to cover:
+## Add webpacker
 
-* Ruby version
+Add the webpacker gem to the `Gemfile`:
 
-* System dependencies
+```
+gem 'webpacker', '~> 3.5'
+```
 
-* Configuration
+Install webpacker:
 
-* Database creation
+```
+rails webpacker:install
+```
 
-* Database initialization
+Note: it is possible to create a new rails project with webpack installed
+```
+rails new rails-vue --webpack
+```
 
-* How to run the test suite
+## Install vue
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rails webpacker:install:vue
+```
 
-* Deployment instructions
+Note: it is possible to create a new rails project with webpack and vue installed
+```
+rails new rails-vue --webpack=vue
+```
 
-* ...
+## Adding a landing page
+
+```
+rails g controller LandingPage index
+```
+
+Set `landing_page#index` as root
+
+config/routes.rb
+```
+root 'landing_page#index
+```
